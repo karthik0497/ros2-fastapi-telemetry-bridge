@@ -1,0 +1,17 @@
+# ROS2 Build and Install Artifacts
+build/
+install/
+log/
+
+# Python Cache & Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# System and Editor temporary files
+.setup.py.swp
+*.swp
+.DS_Store
+.vscode/
