@@ -1,0 +1,14 @@
+[01m[K/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/src/robot_bridge_cpp/src/talker.cpp:9:10:[m[K [01;31m[Kfatal error: [m[K../constants.hpp: No such file or directory
+    9 | #include [01;31m[K"../constants.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+[01m[K/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/src/robot_bridge_cpp/src/listener.cpp:7:10:[m[K [01;31m[Kfatal error: [m[K../constants.hpp: No such file or directory
+    7 | #include [01;31m[K"../constants.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+gmake[2]: *** [CMakeFiles/talker.dir/build.make:76: CMakeFiles/talker.dir/src/talker.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/listener.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/talker.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

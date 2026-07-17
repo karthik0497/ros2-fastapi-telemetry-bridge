@@ -1,0 +1,18 @@
+[0.013s] Invoking command in '/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_cpp': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_cpp -- -j12 -l12
+[0.093s] [ 25%] [32mBuilding CXX object CMakeFiles/talker.dir/src/talker.cpp.o[0m
+[0.093s] [ 50%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[0.377s] [01m[K/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/src/robot_bridge_cpp/src/talker.cpp:9:10:[m[K [01;31m[Kfatal error: [m[K../constants.hpp: No such file or directory
+[0.377s]     9 | #include [01;31m[K"../constants.hpp"[m[K
+[0.377s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[0.378s] compilation terminated.
+[0.379s] [01m[K/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/src/robot_bridge_cpp/src/listener.cpp:7:10:[m[K [01;31m[Kfatal error: [m[K../constants.hpp: No such file or directory
+[0.379s]     7 | #include [01;31m[K"../constants.hpp"[m[K
+[0.379s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[0.379s] compilation terminated.
+[0.385s] gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[0.385s] gmake[2]: *** [CMakeFiles/talker.dir/build.make:76: CMakeFiles/talker.dir/src/talker.cpp.o] Error 1
+[0.385s] gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/listener.dir/all] Error 2
+[0.385s] gmake[1]: *** Waiting for unfinished jobs....
+[0.386s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/talker.dir/all] Error 2
+[0.386s] gmake: *** [Makefile:146: all] Error 2
+[0.388s] Invoked command in '/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_cpp' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_cpp -- -j12 -l12

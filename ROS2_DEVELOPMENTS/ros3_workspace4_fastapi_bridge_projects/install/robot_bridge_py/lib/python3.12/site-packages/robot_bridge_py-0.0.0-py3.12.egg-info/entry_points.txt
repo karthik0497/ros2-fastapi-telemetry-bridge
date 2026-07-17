@@ -1,0 +1,3 @@
+[console_scripts]
+listener = robot_bridge_py.listener:main
+talker = robot_bridge_py.talker:main

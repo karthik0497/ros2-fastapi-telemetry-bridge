@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    base.xacro defines:
+    1. The base_footprint link  — a virtual zero-mass frame at ground level
+    2. The base_link            — the physical chassis body
+    3. The joint connecting them
+
+    WHY base_footprint?
+    Nav2 and many ROS2 navigation tools expect a frame called base_footprint
+    that sits exactly at ground level (z=0). This is the point directly below
+    the robot on the floor. base_link sits above it at the centre of the chassis.
+    Having both is standard practice in mobile robotics.
+  -->
+
+  <!-- Include shared constants and inertia macros -->
+  <!--
+    xacro:include pulls another xacro file into this one.
+    After this line, ${PI} and all inertia macros are available here.
+    The filename is relative to this file's location.
+  -->
+
+
+
+  <!-- ═══════════════════════════════════════════
+       ROBOT DIMENSIONS — change these properties
+       to resize the entire robot automatically
+       ═══════════════════════════════════════════ -->
+
+  <!--
+    All dimensions in metres. All masses in kilograms.
+    Changing any value here updates the geometry, inertia,
+    and joint positions automatically via ${} expressions.
+  -->
+  <xacro:property name="base_length"    value="0.40"/>  <!-- chassis x dimension -->
+  <xacro:property name="base_width"     value="0.30"/>  <!-- chassis y dimension -->
+  <xacro:property name="base_height"    value="0.10"/>  <!-- chassis z dimension -->
+  <xacro:property name="base_mass"      value="4.0"/>   <!-- chassis mass in kg  -->
+
+
+  <!-- ═══════════════════════════════════════════
+       BASE FOOTPRINT LINK
+       ═══════════════════════════════════════════ -->
+
+  <!--
+    base_footprint is a virtual link — it has no geometry, no mass, no inertia.
+    It is purely a coordinate frame sitting at ground level (z=0).
+    It is the root of the entire robot TF tree.
+    ROS2 convention: base_footprint is the robot's floor-level reference frame.
+  -->
+  <link name="base_footprint"/>
+
+
+  <!-- ═══════════════════════════════════════════
+       BASE FOOTPRINT → BASE LINK JOINT
+       ═══════════════════════════════════════════ -->
+
+  <!--
+    This joint connects base_footprint (floor level) to base_link (chassis centre).
+    type="fixed" means no movement between them — they move as one rigid unit.
+
+    origin xyz:
+      x=0, y=0 — directly above footprint, no horizontal offset
+      z = base_height/2 + ground_clearance = 0.05m + 0.05m = 0.10m
+          lifts base_link to the vertical centre of the chassis.
+          This leaves 0.05m (5cm) of ground clearance under the chassis,
+          and aligns the drive wheels (radius 0.05m) to touch the ground exactly.
+  -->
+  <xacro:property name="ground_clearance"   value="0.05"/>   <!-- metres -->
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child  link="base_link"/>
+    <origin xyz="0 0 ${base_height/2 + ground_clearance}" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- ═══════════════════════════════════════════
+       BASE LINK — THE PHYSICAL CHASSIS
+       ═══════════════════════════════════════════ -->
+
+  <!--
+    base_link is the physical body of the robot.
+    Its origin sits at the geometric centre of the chassis box.
+    All wheel joints are measured from this origin.
+  -->
+  <link name="base_link">
+
+    <!--
+      VISUAL — what RViz draws on screen.
+      geometry box: size="x y z" in metres.
+      origin: the geometry is centred on base_link origin, so xyz="0 0 0".
+      material: references the name defined in common_properties.xacro.
+    -->
+    <visual>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="blue"/>
+    </visual>
+
+    <!--
+      COLLISION — the hitbox Gazebo uses for physics.
+      Same shape as visual here. For a simple box this is fine.
+      For complex meshes you would use a simpler collision shape.
+      No material tag — collision shapes have no colour.
+    -->
+    <collision>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+
+    <!--
+      INERTIAL — calls our box_inertia macro from inertia_macros.xacro.
+      Parameters: m=mass, x=length, y=width, z=height
+      The macro calculates all six inertia values automatically.
+      We never type raw ixx/iyy/izz numbers — the formula does it.
+    -->
+    <xacro:box_inertia
+      m="${base_mass}"
+      x="${base_length}"
+      y="${base_width}"
+      z="${base_height}"/>
+
+  </link>
+
+</robot>

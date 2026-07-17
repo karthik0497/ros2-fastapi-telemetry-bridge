@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    gazebo.xacro defines everything Gazebo-specific:
+    1. Per-link colours visible in Gazebo (separate from RViz materials)
+    2. Surface friction and contact properties per link
+    3. The differential drive plugin — the simulated motor controller
+    4. The joint state publisher plugin — publishes wheel positions
+
+    WHY a separate file for Gazebo stuff?
+    RViz and Gazebo have completely different systems for colours,
+    physics properties, and plugins. Keeping them in one file mixes
+    two concerns. gazebo.xacro is only read by Gazebo — RViz ignores
+    every tag in this file. Keeping it separate means you can modify
+    simulation behaviour without touching the robot description.
+
+    GAZEBO HARMONIC NOTE:
+    This file uses the Gazebo Harmonic (gz-sim 8) plugin format.
+    The plugin system changed completely from Gazebo Classic.
+    Do NOT use libgazebo_ros_diff_drive.so — that is Classic only.
+  -->
+
+
+  <!-- ═══════════════════════════════════════════
+       GAZEBO COLOURS
+       ═══════════════════════════════════════════ -->
+
+  <!--
+    gazebo reference="link_name" applies Gazebo-specific properties
+    to that link. This is separate from the material tag inside <link>.
+    The material tag only works in RViz. For Gazebo colours you must
+    use these gazebo reference blocks.
+
+    Gazebo Harmonic uses the <material> tag with a <diffuse> sub-tag
+    for colours, specified as R G B A values (0.0 to 1.0).
+  -->
+
+  <gazebo reference="base_link">
+    <material>
+      <diffuse>0.0 0.0 0.8 1.0</diffuse>    <!-- blue — matches RViz colour -->
+      <specular>0.1 0.1 0.1 1.0</specular>  <!-- slight shine -->
+    </material>
+  </gazebo>
+
+  <gazebo reference="left_wheel">
+    <material>
+      <diffuse>0.2 0.2 0.2 1.0</diffuse>    <!-- dark grey -->
+      <specular>0.1 0.1 0.1 1.0</specular>
+    </material>
+    <!--
+      Surface friction properties for the drive wheels.
+      mu  = Coulomb friction coefficient (main friction, along wheel rolling direction)
+      mu2 = friction perpendicular to rolling direction (lateral)
+      Higher mu = more grip. Rubber wheel on floor is typically 0.8 to 1.0.
+      If wheels slip in simulation, increase these values.
+      If robot vibrates, decrease them slightly.
+
+      kp = contact stiffness (spring constant of ground contact)
+      kd = contact damping (energy absorption on contact)
+      High kp = hard surface. Low kp = soft/spongy surface.
+      minDepth = minimum contact depth before collision is registered.
+    -->
+    <collision name="left_wheel_collision">
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.8</mu>
+            <mu2>0.8</mu2>
+            <fdir1>1 0 0</fdir1>  <!-- primary friction direction = forward -->
+            <slip1>0.0</slip1>    <!-- no slip in rolling direction -->
+            <slip2>0.0</slip2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>1000000.0</kp>
+            <kd>100.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>1.0</max_vel>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+  <gazebo reference="right_wheel">
+    <material>
+      <diffuse>0.2 0.2 0.2 1.0</diffuse>
+      <specular>0.1 0.1 0.1 1.0</specular>
+    </material>
+    <collision name="right_wheel_collision">
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.8</mu>
+            <mu2>0.8</mu2>
+            <fdir1>1 0 0</fdir1>
+            <slip1>0.0</slip1>
+            <slip2>0.0</slip2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>1000000.0</kp>
+            <kd>100.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>1.0</max_vel>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+  <gazebo reference="caster_wheel">
+    <material>
+      <diffuse>0.1 0.1 0.1 1.0</diffuse>    <!-- black -->
+      <specular>0.1 0.1 0.1 1.0</specular>
+    </material>
+    <!--
+      Caster friction must be near zero.
+      The caster must slide and rotate freely in any direction.
+      High friction here causes the robot to resist turning —
+      the caster drags instead of rolling freely.
+      mu = 0.001 is effectively frictionless for simulation purposes.
+    -->
+    <collision name="caster_wheel_collision">
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.001</mu>
+            <mu2>0.001</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>1000000.0</kp>
+            <kd>100.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>1.0</max_vel>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+
+  <!-- ═══════════════════════════════════════════
+       GAZEBO HARMONIC PLUGINS
+       ═══════════════════════════════════════════ -->
+
+  <!--
+    In Gazebo Harmonic, plugins go inside a <gazebo> tag (no reference attribute).
+    The plugin tag uses the filename attribute with the full class name.
+
+    DIFFERENTIAL DRIVE PLUGIN
+    This plugin is the simulated motor controller for our two-wheel AMR.
+
+    What it does:
+    - Subscribes to /cmd_vel (geometry_msgs/Twist) — your velocity commands
+    - Computes left and right wheel speeds from linear + angular velocity
+    - Drives the left_wheel_joint and right_wheel_joint in simulation
+    - Publishes /odom (nav_msgs/Odometry) — estimated robot position
+    - Publishes /tf transform: odom → base_footprint
+
+    Without this plugin:
+    - The robot has wheels in the URDF but no motor
+    - /cmd_vel does nothing
+    - /odom is never published
+    - The robot cannot move in Gazebo
+
+    Key parameters:
+    left_joint / right_joint — must match your joint names in wheels.xacro exactly
+    wheel_separation — must equal 2 * wheel_y_offset = 2 * 0.17 = 0.34m
+    wheel_radius — must match wheel_radius property in wheels.xacro = 0.05m
+  -->
+  <gazebo>
+    <plugin
+      filename="gz-sim-diff-drive-system"
+      name="gz::sim::systems::DiffDrive">
+
+      <!-- Joint names — must exactly match wheels.xacro joint names -->
+      <left_joint>left_wheel_joint</left_joint>
+      <right_joint>right_wheel_joint</right_joint>
+
+      <!--
+        Physical parameters — must match your URDF geometry exactly.
+        wheel_separation = distance between left and right wheel centres
+                         = 2 * wheel_y_offset = 2 * 0.17 = 0.34 metres
+        wheel_radius     = wheel_radius property = 0.05 metres
+      -->
+      <wheel_separation>0.34</wheel_separation>
+      <wheel_radius>0.05</wheel_radius>
+
+      <!-- Velocity limits — prevents simulation instability -->
+      <max_linear_acceleration>1.0</max_linear_acceleration>
+      <max_angular_acceleration>2.0</max_angular_acceleration>
+      <max_linear_velocity>2.0</max_linear_velocity>
+      <max_angular_velocity>2.0</max_angular_velocity>
+
+      <!--
+        Topic names for ROS2 ↔ Gazebo communication.
+        These are Gazebo-side topic names.
+        ros_gz_bridge will map them to ROS2 topic names.
+        We keep them matching standard ROS2 names for simplicity.
+      -->
+      <topic>cmd_vel</topic>
+      <odom_topic>odom</odom_topic>
+      <tf_topic>/tf</tf_topic>
+
+      <!-- Frame IDs published in odometry message -->
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+
+      <!-- Publish odometry at 50Hz -->
+      <odom_publish_frequency>50</odom_publish_frequency>
+
+    </plugin>
+
+
+    <!--
+      JOINT STATE PUBLISHER PLUGIN
+      This plugin publishes the current angle of every joint in the robot
+      to the /world/*/model/*/joint_state Gazebo topic.
+      ros_gz_bridge maps this to ROS2 /joint_states topic.
+      robot_state_publisher reads /joint_states to compute wheel TF frames.
+
+      Without this plugin:
+      - /joint_states is never published from Gazebo
+      - robot_state_publisher cannot compute wheel positions
+      - Wheel frames in RViz are frozen at zero rotation
+    -->
+    <plugin
+      filename="gz-sim-joint-state-publisher-system"
+      name="gz::sim::systems::JointStatePublisher">
+    </plugin>
+
+  </gazebo>
+
+  <!-- Preserve fixed joints to prevent Gazebo from merging links and dropping properties -->
+  <gazebo reference="caster_wheel_joint">
+    <preserveFixedJoint>true</preserveFixedJoint>
+  </gazebo>
+
+</robot>

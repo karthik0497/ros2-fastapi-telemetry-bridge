@@ -1,0 +1,42 @@
+running egg_info
+creating ../../build/robot_bridge_py/robot_bridge_py.egg-info
+writing ../../build/robot_bridge_py/robot_bridge_py.egg-info/PKG-INFO
+writing dependency_links to ../../build/robot_bridge_py/robot_bridge_py.egg-info/dependency_links.txt
+writing entry points to ../../build/robot_bridge_py/robot_bridge_py.egg-info/entry_points.txt
+writing requirements to ../../build/robot_bridge_py/robot_bridge_py.egg-info/requires.txt
+writing top-level names to ../../build/robot_bridge_py/robot_bridge_py.egg-info/top_level.txt
+writing manifest file '../../build/robot_bridge_py/robot_bridge_py.egg-info/SOURCES.txt'
+reading manifest file '../../build/robot_bridge_py/robot_bridge_py.egg-info/SOURCES.txt'
+writing manifest file '../../build/robot_bridge_py/robot_bridge_py.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build
+creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib
+creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+copying robot_bridge_py/talker.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+copying robot_bridge_py/listener.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+copying robot_bridge_py/constants.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+copying robot_bridge_py/__init__.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+running install
+running install_lib
+creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/talker.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/listener.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/constants.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/__init__.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/talker.py to talker.cpython-312.pyc
+byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/listener.py to listener.cpython-312.pyc
+byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/constants.py to constants.cpython-312.pyc
+byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index
+creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index/resource_index
+creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index/resource_index/packages
+copying resource/robot_bridge_py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index/resource_index/packages
+copying package.xml -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/robot_bridge_py
+running install_egg_info
+Copying ../../build/robot_bridge_py/robot_bridge_py.egg-info to /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py-0.0.0-py3.12.egg-info
+running install_scripts
+Installing listener script to /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/robot_bridge_py
+Installing talker script to /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/robot_bridge_py
+writing list of installed files to '/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/install.log'

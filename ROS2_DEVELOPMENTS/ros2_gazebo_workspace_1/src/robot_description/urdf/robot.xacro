@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot name="amr_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    robot.xacro is the TOP-LEVEL file.
+    This is the ONLY file that launch files and Gazebo load directly.
+    It does not define any links or joints itself.
+    Its job is to include all other xacro files in the correct order.
+
+    INCLUDE ORDER MATTERS:
+    1. common_properties  — must come first, defines PI and materials
+                            that all other files depend on
+    2. inertia_macros     — must come before base and wheels,
+                            both use the inertia macros
+    3. base               — defines base_footprint and base_link
+    4. wheels             — defines wheel links and joints,
+                            attaches them to base_link
+    5. gazebo             — adds Gazebo plugins and surface properties
+
+    If you include a file that uses a macro before the file that
+    defines that macro, xacro will throw an error.
+
+    WHY name="amr_robot"?
+    This name becomes the model name in Gazebo.
+    It also appears in RViz and in ros2 topic list output.
+    All other xacro files have <robot> tags too, but without name=
+    because only one file should declare the robot name — this one.
+  -->
+
+  <!-- Step 1: Shared constants (PI) and RViz materials -->
+  <xacro:include filename="$(find robot_description)/urdf/common_properties.xacro"/>
+
+  <!-- Step 2: Inertia calculation macros -->
+  <xacro:include filename="$(find robot_description)/urdf/inertia_macros.xacro"/>
+
+  <!-- Step 3: Base chassis (base_footprint + base_link) -->
+  <xacro:include filename="$(find robot_description)/urdf/base.xacro"/>
+
+  <!-- Step 4: Wheels (left, right drive wheels + caster) -->
+  <xacro:include filename="$(find robot_description)/urdf/wheels.xacro"/>
+
+  <!-- Step 5: Gazebo plugins, colours, friction -->
+  <xacro:include filename="$(find robot_description)/urdf/gazebo.xacro"/>
+
+</robot>

@@ -1,0 +1,1 @@
+/home/karthik/Documents/ROS2_DEVELOPMENTS/ros2_gazebo_workspace_1/build/robot_description/ament_cmake_environment_hooks/local_setup.zsh

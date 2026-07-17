@@ -1,0 +1,44 @@
+[0.748s] Invoking command in '/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/src/robot_bridge_py': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_bridge_py build --build-base /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build install --record /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/install.log --install-scripts $base/lib/robot_bridge_py --single-version-externally-managed install_data
+[0.934s] running egg_info
+[0.934s] creating ../../build/robot_bridge_py/robot_bridge_py.egg-info
+[0.946s] writing ../../build/robot_bridge_py/robot_bridge_py.egg-info/PKG-INFO
+[0.946s] writing dependency_links to ../../build/robot_bridge_py/robot_bridge_py.egg-info/dependency_links.txt
+[0.946s] writing entry points to ../../build/robot_bridge_py/robot_bridge_py.egg-info/entry_points.txt
+[0.946s] writing requirements to ../../build/robot_bridge_py/robot_bridge_py.egg-info/requires.txt
+[0.946s] writing top-level names to ../../build/robot_bridge_py/robot_bridge_py.egg-info/top_level.txt
+[0.946s] writing manifest file '../../build/robot_bridge_py/robot_bridge_py.egg-info/SOURCES.txt'
+[0.970s] reading manifest file '../../build/robot_bridge_py/robot_bridge_py.egg-info/SOURCES.txt'
+[0.970s] writing manifest file '../../build/robot_bridge_py/robot_bridge_py.egg-info/SOURCES.txt'
+[0.970s] running build
+[0.970s] running build_py
+[0.970s] creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build
+[0.971s] creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib
+[0.971s] creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+[0.971s] copying robot_bridge_py/talker.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+[0.971s] copying robot_bridge_py/listener.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+[0.971s] copying robot_bridge_py/constants.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+[0.971s] copying robot_bridge_py/__init__.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py
+[0.971s] running install
+[0.974s] running install_lib
+[0.986s] creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+[0.986s] copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/talker.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+[0.986s] copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/listener.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+[0.987s] copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/constants.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+[0.987s] copying /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build/lib/robot_bridge_py/__init__.py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py
+[0.987s] byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/talker.py to talker.cpython-312.pyc
+[0.987s] byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/listener.py to listener.cpython-312.pyc
+[0.988s] byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/constants.py to constants.cpython-312.pyc
+[0.988s] byte-compiling /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py/__init__.py to __init__.cpython-312.pyc
+[0.988s] running install_data
+[0.988s] creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index
+[0.988s] creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index/resource_index
+[0.988s] creating /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index/resource_index/packages
+[0.988s] copying resource/robot_bridge_py -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/ament_index/resource_index/packages
+[0.988s] copying package.xml -> /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/share/robot_bridge_py
+[0.988s] running install_egg_info
+[1.002s] Copying ../../build/robot_bridge_py/robot_bridge_py.egg-info to /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages/robot_bridge_py-0.0.0-py3.12.egg-info
+[1.003s] running install_scripts
+[1.095s] Installing listener script to /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/robot_bridge_py
+[1.096s] Installing talker script to /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/robot_bridge_py
+[1.096s] writing list of installed files to '/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/install.log'
+[1.132s] Invoked command in '/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/src/robot_bridge_py' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/install/robot_bridge_py/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_bridge_py build --build-base /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/build install --record /home/karthik/Documents/ROS2_DEVELOPMENTS/ros3_workspace4_fastapi_bridge_projects/build/robot_bridge_py/install.log --install-scripts $base/lib/robot_bridge_py --single-version-externally-managed install_data
