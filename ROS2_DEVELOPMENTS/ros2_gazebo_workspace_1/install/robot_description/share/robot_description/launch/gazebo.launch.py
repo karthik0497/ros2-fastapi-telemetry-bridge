@@ -1,1 +1,0 @@
-/home/karthik/Documents/ROS2_DEVELOPMENTS/ros2_gazebo_workspace_1/src/robot_description/launch/gazebo.launch.py
